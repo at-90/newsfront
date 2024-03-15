@@ -7,16 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Build and Deploy
-        uses: actions/checkout@v2
-     - run: |
-            mkdir .public
-            cp -r * .public
-            mv .public public
-
-       with:
-          branch: gh-pages
-          folder: public
-          commit-message: Deploy site
+        run: |
+          mkdir .public
+          cp -r * .public
+          mv .public public
