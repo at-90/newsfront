@@ -1,11 +1,22 @@
-pages:
-  stage: deploy
-  script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
-  artifacts:
-    paths:
-      - public
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+name: EditorConfig
+
+on:
+  push:
+  branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build and Deploy
+        uses: actions/checkout@v2
+     - run: |
+            mkdir .public
+            cp -r * .public
+            mv .public public
+
+       with:
+          branch: gh-pages
+          folder: public
+          commit-message: Deploy site
