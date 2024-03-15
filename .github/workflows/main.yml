@@ -2,7 +2,7 @@ name: EditorConfig
 
 on:
   push:
-  branches: [ master ]
+    branches: [ master ]
 
 jobs:
   deploy:
